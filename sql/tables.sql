@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS vendedores;
 DROP TABLE IF EXISTS clientes_especiais;
 DROP TABLE IF EXISTS clientes;
 DROP TABLE IF EXISTS cargos;
+DROP TABLE IF EXISTS avisos_sistema;
 
 SET FOREIGN_KEY_CHECKS = 1;
 
@@ -118,4 +119,10 @@ CREATE TABLE itens_venda (
     CONSTRAINT fk_item_produto
         FOREIGN KEY (id_produto)
         REFERENCES produtos(id_produto)
+);
+
+CREATE TABLE avisos_sistema (
+    id_aviso INT AUTO_INCREMENT PRIMARY KEY,
+    mensagem TEXT NOT NULL,
+    data_aviso TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
