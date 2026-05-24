@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS produtos;
 DROP TABLE IF EXISTS transportadoras;
 DROP TABLE IF EXISTS funcionarios_especiais;
 DROP TABLE IF EXISTS vendedores;
+DROP TABLE IF EXISTS uso_cashback;
 DROP TABLE IF EXISTS clientes_especiais;
 DROP TABLE IF EXISTS clientes;
 DROP TABLE IF EXISTS cargos;
@@ -36,6 +37,17 @@ CREATE TABLE clientes_especiais (
         FOREIGN KEY (id_cliente)
         REFERENCES clientes(id_cliente)
         ON DELETE CASCADE
+);
+
+CREATE TABLE uso_cashback (
+    id_uso INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT NOT NULL,
+    valor_usado DECIMAL(10,2) NOT NULL CHECK (valor_usado > 0),
+    data_uso TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_uso_cashback_cliente
+        FOREIGN KEY (id_cliente)
+        REFERENCES clientes(id_cliente)
 );
 
 CREATE TABLE vendedores (
