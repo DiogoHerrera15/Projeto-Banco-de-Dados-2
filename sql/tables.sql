@@ -1,5 +1,3 @@
--- E-commerce DEFERENTE
--- Criação das tabelas principais do banco
 
 SET FOREIGN_KEY_CHECKS = 0;
 
