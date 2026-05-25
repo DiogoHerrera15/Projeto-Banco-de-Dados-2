@@ -4,27 +4,25 @@ from sqlalchemy.orm import Session
 
 from app.config import settings
 from app.database import get_db
+from app import models
 from app.routes import (
-    cargo_router,
-    cliente_router,
-    produto_router,
-    transportadora_router,
-    vendedor_router,
-    procedure_router,
-    view_router,
-    trigger_router,
+    cargo_route,
+    cliente_route,
+    produto_route,
+    transportadora_route,
+    vendedor_route,
+    banco_route,
 )
 
 app = FastAPI(title=settings.app_name)
 
-app.include_router(cargo_router.router)
-app.include_router(cliente_router.router)
-app.include_router(transportadora_router.router)
-app.include_router(vendedor_router.router)
-app.include_router(produto_router.router)
-app.include_router(procedure_router.router)
-app.include_router(view_router.router)
-app.include_router(trigger_router.router)
+app.include_router(cargo_route.router)
+app.include_router(cliente_route.router)
+app.include_router(transportadora_route.router)
+app.include_router(vendedor_route.router)
+app.include_router(produto_route.router)
+app.include_router(banco_route.router)
+
 
 
 @app.get("/health")

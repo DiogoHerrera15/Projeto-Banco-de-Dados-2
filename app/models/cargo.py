@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy.orm import relationship
  
 from app.database import Base
  
@@ -10,3 +11,4 @@ class Cargo(Base):
     nome = Column(String(100), nullable=False)
     descricao = Column(Text, nullable=True)
  
+    vendedores = relationship("Vendedor", back_populates="cargo")   

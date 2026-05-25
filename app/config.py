@@ -1,8 +1,9 @@
+from urllib.parse import quote_plus
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-
     app_name: str = "Ecommerce Deferente API"
     debug: bool = True
 
@@ -14,15 +15,14 @@ class Settings(BaseSettings):
 
     @property
     def database_url(self) -> str:
+        senha = quote_plus(self.db_password)
         return (
-            f"mysql+pymysql://{self.db_user}:{self.db_password}"
+            f"mysql+pymysql://{self.db_user}:{senha}"
             f"@{self.db_host}:{self.db_port}/{self.db_name}"
             f"?charset=utf8mb4"
         )
 
-    model_config = SettingsConfigDict(
-        env_file=".env",
-    )
+    model_config = SettingsConfigDict(env_file=".env")
 
 
 settings = Settings()
