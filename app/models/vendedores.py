@@ -5,7 +5,7 @@ from app.database import Base
 
 
 class Vendedor(Base):
-    __tablename__ = "vendedores"
+    __tablename__ = "Vendedores"
 
     id_vendedor = Column(Integer, primary_key=True, autoincrement=True)
     nome = Column(String(100), nullable=False)

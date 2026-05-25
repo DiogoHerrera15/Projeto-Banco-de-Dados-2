@@ -4,15 +4,12 @@ from sqlalchemy.orm import Session
 
 from app.config import settings
 from app.database import get_db
+from app.routes import cargo_route, cliente_route  
+app = FastAPI(title=settings.app_name)
 
-app = FastAPI(
-    title=settings.app_name,
-)
+app.include_router(cargo_route.router)
+app.include_router(cliente_route.router) 
 
-
-@app.get("/")
-def root():
-    return {}
 
 @app.get("/health")
 def health_check(db: Session = Depends(get_db)):
@@ -21,8 +18,4 @@ def health_check(db: Session = Depends(get_db)):
         db_status = "ok"
     except Exception as exc:
         db_status = f"erro: {exc}"
-
-    return {
-        "api": "ok",
-        "database": db_status,
-    }
+    return {"api": "ok", "database": db_status}
