@@ -18,4 +18,5 @@ Professor : Jheymersson
 - SQL
 - MySQL Workbench
 - Git/GitHub
-- Linguagem de programação : 
+- Linguagem de programação : Python (fastapi, uvicorn, sqlalchemy, pymysql, cryptography, pydantic, pydantic-settings, python-dotenv)
+ 
